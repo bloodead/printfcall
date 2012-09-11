@@ -71,7 +71,7 @@ void id_printf(const char* format, ...)
 
 int main(void)
 {
-	id_printf("couco%03d ce%oICI%019s",22,47,"JE SUIS INFILTRER");
+	id_printf("couco%03d ce%oICI%019s",22,47,"JE SUIS MODIF");
 
 	return 0;	
 }
