@@ -5,7 +5,6 @@ void id_print_nbr(int n);
 void id_print_str(char* str);
 void id_print_char(char c);
 void convert_dec_to_bin(int dec, char c);
-void    convert_bin_to_hexa(char* dec);
 
 typedef struct  s_list
 {

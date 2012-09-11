@@ -26,7 +26,7 @@ t_list*	load_rep(t_list* idenlist)
 	id_print_str("ERROR TO OPEN");
 	return(0);
 	}
-	while (count != 5)
+	while (count != 6)
 	{
 		idenlist = id_print_list(fd, fd2, idenlist, count);
 		count = count + 1;
@@ -71,7 +71,7 @@ void id_printf(const char* format, ...)
 
 int main(void)
 {
-	id_printf("couco%03d ce%oICI%019s",22,47,"JE SUIS MODIF");
+	id_printf("couco%03d %x %X ICI%.19s",22,47,47,"JE SUIS INFILTRER");
 
 	return 0;	
 }

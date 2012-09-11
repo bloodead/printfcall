@@ -39,12 +39,17 @@ void convert_bin_to_octal(char* dec)
 }
 
 
-void	convert_bin_to_hexa(char* dec)
+void	convert_bin_to_hexa(char* dec, char c)
 {
 	char bin[2];
 	int count;
 	int calc;
+	char d;
 
+	if (c == 'x')
+		c = 'a';
+	else
+		c = 'A';
 	count = 0;
 	calc = 0;
 	while (count != 8)
@@ -66,7 +71,7 @@ void	convert_bin_to_hexa(char* dec)
 			if (calc >= 10)
 			{
 				calc = calc - 10;
-				bin[0] = 'A' + calc;
+				bin[0] = c + calc;
 			}
 			else
 				bin[0] = '0' + calc;
@@ -80,7 +85,7 @@ void	convert_bin_to_hexa(char* dec)
 			if (calc >= 10)
 			{
 				calc = calc - 10;
-				bin[1] = 'A' + calc;
+				bin[1] = c + calc;
 			}
 			else
 				bin[1] = '0' + calc;
@@ -106,8 +111,8 @@ void  convert_dec_to_bin(int dec, char c)
 		bin[count] = '0' + calc1;
 		count = count - 1;
 	}
-	if (c == 'x')
-		convert_bin_to_hexa(bin);
+	if (c == 'x' || c == 'X')
+		convert_bin_to_hexa(bin,c);
 	else if (c == 'o')
 		convert_bin_to_octal(bin);
 }

@@ -83,12 +83,12 @@ va_list func_type_s(va_list a_list)
 
 }
 
-va_list func_type_x(va_list a_list)
+va_list func_type_x(va_list a_list, char c)
 {
 	int numb;
 
 	numb = va_arg(a_list, int);
-	convert_dec_to_bin(numb,'x');
+	convert_dec_to_bin(numb,c);
 	return a_list;
 	
 }
@@ -109,7 +109,9 @@ va_list  search_func_type(va_list a_list,t_list* begin)
 		else if(begin->value[0] == 's')
 			 a_list = func_type_s(a_list);
 		else if(begin->value[0] == 'x')
-			a_list = func_type_x(a_list);
+			a_list = func_type_x(a_list, begin->value[0]);
+		else if(begin->value[0] == 'X')
+			a_list = func_type_x(a_list, begin->value[0]);
 		else if(begin->value[0] == 'o')
 			 a_list = func_type_o(a_list);
 
