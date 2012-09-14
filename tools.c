@@ -1,3 +1,5 @@
+#include <stdarg.h>
+#include "base.h"
 
 void convert_bin_to_octal(char* dec)
 {
@@ -44,7 +46,6 @@ void	convert_bin_to_hexa(char* dec, char c)
 	char bin[2];
 	int count;
 	int calc;
-	char d;
 
 	if (c == 'x')
 		c = 'a';

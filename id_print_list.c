@@ -1,13 +1,8 @@
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdarg.h>
+#include "base.h"
 
-char*   id_getline(int fd);
-typedef	struct	s_list 
-{
-	char*	value;
-	char*	token;
-	struct	s_list*	next;  
-}t_list;
 
 t_list*	add_list(t_list* tmp, char* str, char* str2, int count)
 {
