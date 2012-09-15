@@ -23,7 +23,7 @@ t_list*	load_rep(t_list* idenlist)
 	id_print_str("ERROR TO OPEN");
 	return(0);
 	}
-	while (count != 6)
+	while (count != 8)
 	{
 		idenlist = id_print_list(fd, fd2, idenlist, count);
 		count = count + 1;
@@ -43,9 +43,14 @@ void check_type(const char* format, va_list a_list, t_list* listype)
 	while (format[count] != '\0')
 	{
 
-		if(format[count] == '%')
+		if(format[count] == '%' && format[count + 1] != '%' )
 		{
 			a_list = check(listype,format,a_list,pt_count);
+		}
+		else if (format[count] == '%' && format[count + 1] == '%' )
+		{
+			id_print_char('%');
+			count = count + 1;
 		}
 		else
 		 id_print_char(format[count]);
