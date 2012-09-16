@@ -8,7 +8,7 @@
 
 t_list*	load_rep(t_list* idenlist)
 {	
-	char* path;
+	char*	path;
 	int	fd;
 	int	fd2;
 	int	count;
@@ -27,23 +27,20 @@ t_list*	load_rep(t_list* idenlist)
 	{
 		idenlist = id_print_list(fd, fd2, idenlist, count);
 		count = count + 1;
-	}		
-	
-
+	}
 	return (idenlist);
 }
 
-void check_type(const char* format, va_list a_list, t_list* listype)
+void	check_type(const char* format, va_list a_list, t_list* listype)
 {
-	int* pt_count;
-	int count;
+	int*	pt_count;
+	int	count;
 
 	count = 0;
 	pt_count = &count;
 	while (format[count] != '\0')
 	{
-
-		if(format[count] == '%' && format[count + 1] != '%' )
+		if (format[count] == '%' && format[count + 1] != '%' )
 		{
 			a_list = check(listype,format,a_list,pt_count);
 		}
@@ -55,19 +52,17 @@ void check_type(const char* format, va_list a_list, t_list* listype)
 		else
 		 id_print_char(format[count]);
 		count = count + 1;
-	} 
+	}
 }
 
 
-void id_printf(const char* format, ...)
+void	id_printf(const char* format, ...)
 {
-	t_list* listype;
-	va_list a_list;
+	t_list*	listype;
+	va_list	a_list;
 	listype = 0;
 	listype = load_rep(listype);
 	va_start(a_list, format);
 	check_type(format,a_list, listype);
 	va_end(a_list);
-
 }
-

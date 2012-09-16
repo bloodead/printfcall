@@ -1,39 +1,25 @@
 #include <stdarg.h>
+#include <stdlib.h>
 #include "base.h"
+#include "reduc.h"
 
-void convert_bin_to_octal(char* dec)
+void	convert_bin_to_octal(char* dec)
 {
-	char	bin[3];
+	char*	bin;
 	int	count;
 	int	calc;
 
+	bin = malloc(sizeof(*bin) * 3);
 	calc = 0;
 	count = 7;
-
 	while (count >= 0)
 	{
 		if(dec[count] == '1')
+			calc = bin_octal(count, calc);
+		if (count == 5 || count == 2 || count == 0)
 		{
-			if (count == 7 || count == 4 || count == 1)
-				calc = calc + 1;
-			else if (count == 6 || count == 3 || count == 0)
-				calc = calc + 2;
-			else if (count == 5 || count == 2)
-				calc = calc + 4;
-		}
-		if (count == 5)
-		{
-			bin[2] = '0' + calc;
+			bin = bin_octal_s(count, bin, calc);
 			calc = 0;
-		}
-		if (count == 2)
-		{
-			bin[1] = '0' + calc;
-			calc = 0;
-		}
-		if (count == 0)
-		{
-			bin[0] = '0' + calc;
 		}
 		count = count - 1;
 	}
@@ -97,9 +83,9 @@ void	convert_bin_to_hexa(char* dec, char c)
 	}
 }
 
-void  convert_dec_to_bin(int dec, char c)
+void	convert_dec_to_bin(int dec, char c)
 {
-	char bin[8];
+	char	bin[8];
 	int	count;
 	int	calc1;
 	count = 7;

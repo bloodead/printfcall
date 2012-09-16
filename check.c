@@ -61,6 +61,7 @@ va_list	check_point(const char* format, va_list a_list, int* pt_count)
 		print_point(atoi(str), va_arg(a_list,char*));
 	}
 	*pt_count = *pt_count + 1;
+	free(str);
 	return a_list;
 }
 

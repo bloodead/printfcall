@@ -2,10 +2,9 @@
 #include <unistd.h>
 
 
-int	inc_buf(char** buf, int* size,char c)
+int	inc_buf(char** buf, int* size, char c)
 {
 	char*	tmp;
-
 	*size = *size + 1;
 	tmp = realloc(*buf, sizeof(*tmp) * (*size + 1));
 	if (tmp == 0)
