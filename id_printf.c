@@ -65,4 +65,5 @@ void	id_printf(const char* format, ...)
 	va_start(a_list, format);
 	check_type(format,a_list, listype);
 	va_end(a_list);
+	free(listype);
 }

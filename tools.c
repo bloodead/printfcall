@@ -24,15 +24,17 @@ void	convert_bin_to_octal(char* dec)
 		count = count - 1;
 	}
 	id_print_str(bin);
+	free(bin);
 }
 
 
 void	convert_bin_to_hexa(char* dec, char c)
 {
-	char bin[2];
+	char* bin;
 	int count;
 	int calc;
 
+	bin = malloc(sizeof(*bin) * 2);
 	if (c == 'x')
 		c = 'a';
 	else
@@ -42,45 +44,16 @@ void	convert_bin_to_hexa(char* dec, char c)
 	while (count != 8)
 	{
 		if(dec[count] == '1')
+			calc = bin_hexa(count, calc);
+		if (count == 3 || count == 7)
 		{
-			if (count == 0 || count == 4)
-				calc = calc + 8;
-			else if (count == 1 || count == 5)
-				calc = calc + 4;
-			else if (count == 2 || count == 6)
-				calc = calc + 2;
-			else if (count == 3 || count == 7)
-				calc = calc + 1;
-		}
-
-		if (count == 3)
-		{
-			if (calc >= 10)
-			{
-				calc = calc - 10;
-				bin[0] = c + calc;
-			}
-			else
-				bin[0] = '0' + calc;
-
+			bin = bin_hexa_s(count, calc, bin, c);
 			calc = 0;
-			id_print_char(bin[0]);
-		}
-
-		if (count == 7)
-		{
-			if (calc >= 10)
-			{
-				calc = calc - 10;
-				bin[1] = c + calc;
-			}
-			else
-				bin[1] = '0' + calc;
-			calc = 0;
-			id_print_char(bin[1]);
 		}
 		count = count + 1;
 	}
+		id_print_str(bin);
+		free(bin);
 }
 
 void	convert_dec_to_bin(int dec, char c)

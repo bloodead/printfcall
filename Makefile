@@ -10,6 +10,7 @@ SRCS	=	check.c		\
 		id_print_char.c	\
 		id_print_str.c	\
 		id_print_nbr.c	\
+		tools_reduc.c	\
 		tools.c
 OBJS	=	$(SRCS:.c=.o)
 CC	=	gcc
